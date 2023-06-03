@@ -2,6 +2,7 @@ import { Router } from "express";
 import { createUserController } from "./useCase/CreateUser";
 import { userProfileController } from "./useCase/UserProfile";
 import { loginController } from "./useCase/Login";
+import { createIncomeController } from "./useCase/CreateIncome";
 
 const router = Router()
 
@@ -15,6 +16,10 @@ router.get('/users/:id', (request, response) => {
 
 router.post('/login', (request, response) => {
     return loginController.handle(request, response);
+});
+
+router.post('/income', (request, response) => {
+    return createIncomeController.handle(request, response);
 });
 
 export { router };
