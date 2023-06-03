@@ -3,7 +3,6 @@ import { User } from "../../entities/User";
 import { IUsersRepository } from "../IUsersRepository";
 
 export class PostgresUserRepository implements IUsersRepository {
-    private users: User[] = [];
 
     async findByEmail(email: string): Promise<any> {
         return UserModel.findOne({ where: { email } });
@@ -13,5 +12,9 @@ export class PostgresUserRepository implements IUsersRepository {
         await UserModel.create({
             ...user
         });
+    }
+
+    async userProfile(id: string): Promise<any> {
+        return UserModel.findOne({ where: { id } });
     }
 }
