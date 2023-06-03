@@ -7,7 +7,7 @@ export class CreateUserController {
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const { name, email, phone, password } = request.body;
+        const { name, email, phone, password, role_id } = request.body;
 
         try {
             
@@ -15,7 +15,8 @@ export class CreateUserController {
                 name,
                 email,
                 phone,
-                password
+                password,
+                role_id
             })
 
             return response.status(201).send();

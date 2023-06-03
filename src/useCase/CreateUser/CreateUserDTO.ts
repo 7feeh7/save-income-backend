@@ -3,4 +3,5 @@ export interface ICreateUserRequestDTO {
     email: string;
     phone: string;
     password: string;
+    role_id?: unknown;
 }

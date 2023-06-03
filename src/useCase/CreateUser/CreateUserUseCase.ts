@@ -2,6 +2,7 @@ import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { ICreateUserRequestDTO } from "./CreateUserDTO";
 import { User } from "../../entities/User";
 import { IMailProvider } from "../../providers/IMailProvider";
+import bcrypt from 'bcrypt';
 
 export class CreateUserUseCase {
     constructor(
@@ -16,11 +17,14 @@ export class CreateUserUseCase {
             throw new Error('User already exists.');
         }
 
+        const hashedPassword = await bcrypt.hash(data.password, 10);
+
         const user = new User(
             data.name,
             data.email,
             data.phone,
-            data.password
+            hashedPassword,
+            data.role_id
         );
 
         await this.usersRepository.save(user);

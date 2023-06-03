@@ -26,6 +26,22 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      role_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'roles',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        defaultValue: 2,
+      },
+      is_active: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+      },
       created_at: {
         type: DataTypes.DATE,
         allowNull: false
