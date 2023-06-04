@@ -3,6 +3,7 @@ import { ICreateUserRequestDTO } from "./CreateUserDTO";
 import { User } from "../../entities/User";
 import { IMailProvider } from "../../providers/IMailProvider";
 import bcrypt from 'bcrypt';
+import { bcryptSettings } from "../../config/auth";
 
 export class CreateUserUseCase {
     constructor(
@@ -17,7 +18,7 @@ export class CreateUserUseCase {
             throw new Error('User already exists.');
         }
 
-        const hashedPassword = await bcrypt.hash(data.password, 10);
+        const hashedPassword = await bcrypt.hash(data.password, bcryptSettings.salts);
 
         const user = new User(
             data.name,

@@ -47,7 +47,8 @@ UserModel.init({
 })
 
 UserModel.belongsTo(RoleModel, { 
-    foreignKey: 'role_id' 
+    foreignKey: 'role_id',
+    as: 'role', 
 });
 
 RoleModel.hasMany(UserModel, { 

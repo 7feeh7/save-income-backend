@@ -10,12 +10,12 @@ export class LoginController {
         const { email, password } = request.body;
 
         try {
-            await this.loginUseCase.execute({ email, password });
+            const data = await this.loginUseCase.execute({ email, password });
 
-            return response.status(200).json({ message: 'Login successful' });
+            return response.status(200).json({ token: data });
         } catch (err: unknown) {
             return response.status(400).json({
-                message: (err as Error).message || 'Unexpected error.'
+                message: 'Invalid email or password.'
             })
         }
     }

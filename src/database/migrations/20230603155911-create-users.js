@@ -24,6 +24,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      token: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       role_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -34,6 +38,10 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         defaultValue: 2,
+      },
+      last_acess: {
+        type: Sequelize.DATE,
+        allowNull: true,
       },
       is_active: {
         type: Sequelize.BOOLEAN,

@@ -1,3 +1,4 @@
+import { RoleModel } from "../../database/models/Role";
 import { UserModel } from "../../database/models/User";
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../IUsersRepository";
@@ -15,6 +16,27 @@ export class PostgresUserRepository implements IUsersRepository {
     }
 
     async userProfile(id: string): Promise<any> {
-        return UserModel.findOne({ where: { id } });
+        return UserModel.findOne({
+            attributes: [
+                "id",
+                "name",
+                "email",
+                "phone",
+                "last_acess",
+                "is_active"
+            ],
+            include: [
+                {
+                    attributes: ["name"],
+                    model: RoleModel,
+                    as: "role",
+                },
+            ],
+            where: { id }
+        });
+    }
+
+    async refreshToken(token: string, lastAcess: string): Promise<void> {
+
     }
 }
