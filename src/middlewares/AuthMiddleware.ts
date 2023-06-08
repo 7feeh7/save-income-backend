@@ -27,20 +27,13 @@ export class AuthMiddleware {
 
         const { id } = data as TokenPayload;
 
-        const dbUser = await this.usersRepository.existUserWithToken(
-            id,
-            token
-        );
-
-        console.log(dbUser)
+        const user = await this.usersRepository.existUserWithToken(id, token);
       
-        if (!dbUser) throw new Error("Access Denied");
+        if (!user) throw new Error("Access Denied");
 
         return {
             statusCode: 200,
-            headers: {
-                userLoggerIn: dbUser    
-            },
+            headers: { userLoggerIn: user },
         };
     }
 }

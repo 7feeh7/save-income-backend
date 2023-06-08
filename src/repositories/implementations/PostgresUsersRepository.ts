@@ -45,6 +45,18 @@ export class PostgresUserRepository implements IUsersRepository {
 
     async existUserWithToken(id: string, token: string): Promise<any> {
         return await UserModel.findOne({ 
+            attributes: [
+                "id",
+                "name",
+                "email",
+            ],
+            include: [
+                {
+                    attributes: ["name"],
+                    model: RoleModel,
+                    as: "role",
+                },
+            ],
             where: { id, token }, 
             raw: true 
         });
