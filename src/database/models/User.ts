@@ -8,7 +8,9 @@ export class UserModel extends Model {
     public email!: string;
     public phone!: string;
     public password!: string;
-    public role_id!: number;
+    public roleId!: number;
+
+    public last_acess?: Date | null;
 
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
@@ -31,10 +33,18 @@ UserModel.init({
     password: {
         type: DataTypes.STRING,
     },
+    token: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     roleId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 2,
+    },
+    lastAcess: {
+        type: DataTypes.DATE,
+        allowNull: true,
     },
     isActive: {
         type: DataTypes.BOOLEAN,

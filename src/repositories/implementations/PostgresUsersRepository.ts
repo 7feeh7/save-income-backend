@@ -36,7 +36,10 @@ export class PostgresUserRepository implements IUsersRepository {
         });
     }
 
-    async refreshToken(token: string, lastAcess: string): Promise<void> {
-
+    async refreshToken(userId: string, token: string, lastAcess: Date): Promise<void> {
+        await UserModel.update(
+            { token, last_acess: lastAcess },
+            { where: { id: userId } }
+        );
     }
 }
