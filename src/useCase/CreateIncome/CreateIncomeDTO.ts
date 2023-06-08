@@ -1,5 +1,5 @@
 export interface ICreateIncomeRequestDTO {
-    user_id: string;
+    userId: string;
     description: string;
     amount: number;
 }

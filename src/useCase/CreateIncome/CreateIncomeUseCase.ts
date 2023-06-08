@@ -10,7 +10,7 @@ export class CreateIncomeUseCase {
     
     async execute(data: ICreateIncomeRequestDTO) {
         const income = new Income(
-            data.user_id,
+            data.userId,
             data.description,
             Number(formatCurrencyForPostgres(data.amount))
         );

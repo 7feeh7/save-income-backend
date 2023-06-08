@@ -4,8 +4,7 @@ import { UserModel } from "./User";
 
 export class IncomeModel extends Model {
     public id!: string;
-    
-    public user_id!: string;
+    public userId!: string;
     public description!: string;
     public amount!: number;
 
@@ -20,9 +19,10 @@ IncomeModel.init(
       primaryKey: true,
       allowNull: false,
     },
-    user_id: {
+    userId: {
         type: DataTypes.STRING,
         allowNull: false,
+        field: 'user_id',
     },
     description: {
       type: DataTypes.STRING,

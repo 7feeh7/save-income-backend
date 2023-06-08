@@ -7,16 +7,18 @@ export class CreateIncomeController {
     ) { }
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const { user_id, description, amount } = request.body;
+        const { userId, description, amount } = request.body;
+        
         try {
-
             await this.createIncomeUseCase.execute({
-                user_id,
+                userId,
                 description,
                 amount
             });
 
-            return response.status(201).json({ message: "Successfully registered income." });
+            return response.status(201).json({ 
+                message: "Successfully registered income." 
+            });
         } catch (err: unknown) {
             return response.status(400).json({
                 message: (err as Error).message || 'Unexpected error.'
