@@ -42,4 +42,11 @@ export class PostgresUserRepository implements IUsersRepository {
             { where: { id: userId } }
         );
     }
+
+    async existUserWithToken(id: string, token: string): Promise<any> {
+        return await UserModel.findOne({ 
+            where: { id, token }, 
+            raw: true 
+        });
+    }
 }

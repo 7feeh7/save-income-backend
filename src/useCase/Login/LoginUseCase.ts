@@ -3,7 +3,7 @@ import { User } from "../../entities/User";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { ILoginRequestDTO } from "./LoginDTO";
 import bcrypt from 'bcrypt';
-import { sign } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 export class LoginUseCase {
     constructor(
@@ -19,19 +19,14 @@ export class LoginUseCase {
     }
 
     private async validatePassword(password: string, dbhash: string) {
-        const isValid = await bcrypt.compare(password, dbhash);
+        const isValidPassword = await bcrypt.compare(password, dbhash);
 
-        if (!isValid) throw new Error("Invalid email or password.");
+        if (!isValidPassword) throw new Error("Invalid email or password.");
     }
 
     private async setToken(user: User) {
-        const token = sign({}, auth.secretKey, {
-            subject: user.id,
-            expiresIn: auth.expiresIn
-        });
-
+        const token = jwt.sign({ id: user.id}, auth.secretKey, { expiresIn: auth.expiresIn });
         await this.usersRepository.refreshToken(user.id, token, new Date());
-
         return token;
     }
 }
