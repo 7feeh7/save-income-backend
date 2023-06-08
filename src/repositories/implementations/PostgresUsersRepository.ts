@@ -22,8 +22,8 @@ export class PostgresUserRepository implements IUsersRepository {
                 "name",
                 "email",
                 "phone",
-                "last_acess",
-                "is_active"
+                "lastAcess",
+                "isActive"
             ],
             include: [
                 {
@@ -38,7 +38,7 @@ export class PostgresUserRepository implements IUsersRepository {
 
     async refreshToken(userId: string, token: string, lastAcess: Date): Promise<void> {
         await UserModel.update(
-            { token, last_acess: lastAcess },
+            { token, lastAcess },
             { where: { id: userId } }
         );
     }

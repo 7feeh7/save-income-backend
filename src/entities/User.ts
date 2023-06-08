@@ -7,14 +7,21 @@ export class User {
     public email: string;
     public phone: string;
     public password: string;
-    public role_id?: unknown;
+    public roleId?: unknown;
 
-    constructor(name: string, email: string, phone: string, password: string, role_id?: unknown, id?: string) {
+    constructor(
+        name: string, 
+        email: string, 
+        phone: string, 
+        password: string, 
+        roleId?: unknown, 
+        id?: string
+    ) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.password = password;
-        this.role_id = role_id;
+        this.roleId = roleId;
 
         if (!id) {
             this.id = uuid();
