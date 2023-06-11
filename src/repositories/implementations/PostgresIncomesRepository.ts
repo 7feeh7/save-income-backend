@@ -8,4 +8,12 @@ export class PostgresIncomeRepository implements IIncomeRepository {
             ...income
         });
     }
+
+    async getIncomeByUser(userId: string): Promise<any> {
+        return await IncomeModel.findAll({
+            where: {
+                user_id: userId
+            }
+        })
+    }
 }

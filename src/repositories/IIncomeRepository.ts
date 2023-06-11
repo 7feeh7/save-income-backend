@@ -1,5 +1,6 @@
 import { Income } from "../entities/Income";
 
 export interface IIncomeRepository {
-    save(user: Income): Promise<void>
+    save(income: Income): Promise<void>
+    getIncomeByUser(userId: string): Promise<any>
 }
