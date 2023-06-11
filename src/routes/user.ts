@@ -5,15 +5,16 @@ import { createUserController } from "../useCase/CreateUser";
 import { userProfileController } from "../useCase/UserProfile";
 
 const userRouter = Router();
+const userAuthenticatedRouter = Router();
 
-userRouter.use(adaptMiddleware(makeAuthMiddleware()));
+userAuthenticatedRouter.use(adaptMiddleware(makeAuthMiddleware()));
 
 userRouter.post('/', (request, response) => {
     return createUserController.handle(request, response);
 });
 
-userRouter.get('/:id', (request, response) => {
+userAuthenticatedRouter.get('/:id', (request, response) => {
     return userProfileController.handle(request, response);
 });
 
-export { userRouter };
+export { userRouter, userAuthenticatedRouter };
