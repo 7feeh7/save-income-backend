@@ -41,10 +41,10 @@ IncomeModel.init(
 );
 
 IncomeModel.belongsTo(UserModel, { 
-    foreignKey: 'user_id' 
+    foreignKey: 'userId' 
 });
 
 UserModel.hasMany(IncomeModel, { 
-    foreignKey: 'user_id' 
+    foreignKey: 'userId' 
 });
 
