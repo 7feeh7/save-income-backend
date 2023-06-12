@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Save-Income é um projeto Node.js que permite aos usuários gerenciar suas receitas e despesas para um melhor controle financeiro. Ele fornece recursos para registrar, rastrear e analisar transações financeiras.
+Save-Income é um projeto Node.js que permite aos usuários gerenciar suas receitas e despesas para um melhor controle financeiro. Ele fornece recursos para registrar, rastrear e analisar transações financeiras. 💰💹🤑
 
 ## Tecnologias
 

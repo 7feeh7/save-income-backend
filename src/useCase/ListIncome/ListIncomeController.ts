@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { ListIncomeUseCase } from "./ListIncomeUseCase";
+import { IUser } from "./ListIncomeDTO"
 
 export class ListIncomeController {
     constructor(
@@ -7,7 +8,7 @@ export class ListIncomeController {
     ) { }
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const { id } = request.headers.userLoggerIn
+        const { id } = new IUser(request.headers.userLoggerIn)
 
         try {
             const incomes = await this.listIncomeUseCase.execute(id);
