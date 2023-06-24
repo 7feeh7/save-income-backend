@@ -18,9 +18,7 @@ export class CreateExpenseController {
                 isFixed
             });
 
-            return response.status(201).json({ 
-                message: "Successfully registered expense." 
-            });
+            return response.status(201).send();
         } catch (err: unknown) {
             return response.status(400).json({
                 message: (err as Error).message || 'Unexpected error.'

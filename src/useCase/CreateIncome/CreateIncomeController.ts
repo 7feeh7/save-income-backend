@@ -16,9 +16,7 @@ export class CreateIncomeController {
                 amount
             });
 
-            return response.status(201).json({ 
-                message: "Successfully registered income." 
-            });
+            return response.status(201).send();
         } catch (err: unknown) {
             return response.status(400).json({
                 message: (err as Error).message || 'Unexpected error.'
