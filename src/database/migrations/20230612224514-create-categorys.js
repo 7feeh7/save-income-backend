@@ -30,7 +30,7 @@ module.exports = {
       },
     });
 
-    await queryInterface.bulkInsert('roles', [
+    await queryInterface.bulkInsert('categorys', [
       { name: 'Alimentação', created_at: new Date(), updated_at: new Date() },
       { name: 'Moradia', created_at: new Date(), updated_at: new Date() },
       { name: 'Transporte', created_at: new Date(), updated_at: new Date() },
