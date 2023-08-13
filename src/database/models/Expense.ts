@@ -62,7 +62,8 @@ UserModel.hasMany(ExpenseModel, {
 });
 
 ExpenseModel.belongsTo(CategoryModel, {
-    foreignKey: 'categoryId'
+    foreignKey: 'categoryId',
+    as: 'category'
 });
 
 CategoryModel.hasMany(ExpenseModel, {

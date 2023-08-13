@@ -1,5 +1,6 @@
 import { Expense } from "../entities/Expense";
 
 export interface IExpenseRepository {
-    save(income: Expense): Promise<void>
+    save(expense: Expense): Promise<void>;
+    getExpenseByUser(userId: string): Promise<any>;
 }
