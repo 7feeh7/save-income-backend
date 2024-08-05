@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response } from "express"
+import { Request } from "express"
 import jwt from "jsonwebtoken"
 import { auth } from "../config/auth"
-import { PostgresUserRepository } from "../repositories/implementations/PostgresUsersRepository"
-import { IUsersRepository } from "../repositories/IUsersRepository"
+import { PostgresUserRepository } from "@/repositories/implementations/PostgresUsersRepository"
+import { IUsersRepository } from "@/repositories/IUsersRepository"
 
 interface TokenPayload {
   id: string
@@ -11,7 +11,7 @@ interface TokenPayload {
 }
 
 export class AuthMiddleware {
-  constructor(private usersRepository: IUsersRepository) {}
+  constructor(private usersRepository: IUsersRepository) { }
   async handle(request: Request) {
     const { authorization } = request.headers
 

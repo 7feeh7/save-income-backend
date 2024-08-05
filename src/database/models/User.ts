@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize"
-import { sequelize } from "../sequelize"
+import { sequelize } from "@/database/sequelize"
 import { RoleModel } from "./Role"
 
 export class UserModel extends Model {

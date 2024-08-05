@@ -1,7 +1,7 @@
-import { RoleModel } from "../../database/models/Role"
-import { UserModel } from "../../database/models/User"
-import { User } from "../../entities/User"
-import { IUsersRepository } from "../IUsersRepository"
+import { RoleModel } from "@/database/models/Role"
+import { UserModel } from "@/database/models/User"
+import { User } from "@/entities/User"
+import { IUsersRepository } from "@/repositories/IUsersRepository"
 
 export class PostgresUserRepository implements IUsersRepository {
   async findByEmail(email: string): Promise<any> {

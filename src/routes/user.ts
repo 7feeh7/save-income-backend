@@ -1,8 +1,8 @@
 import { Router } from "express"
-import { adaptMiddleware } from "../adapters/ExpressMiddlewareAdapter"
-import { makeAuthMiddleware } from "../middlewares/AuthMiddleware"
-import { createUserController } from "../useCase/CreateUser"
-import { userProfileController } from "../useCase/UserProfile"
+import { adaptMiddleware } from "@/adapters/ExpressMiddlewareAdapter"
+import { makeAuthMiddleware } from "@/middlewares/AuthMiddleware"
+import { createUserController } from "@/useCase/CreateUser"
+import { userProfileController } from "@/useCase/UserProfile"
 
 const userRouter = Router()
 const userAuthenticatedRouter = Router()

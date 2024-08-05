@@ -1,4 +1,4 @@
-import { PostgresExpenseRepository } from "../../repositories/implementations/PostgresExpenseRepository"
+import { PostgresExpenseRepository } from "@/repositories/implementations/PostgresExpenseRepository"
 import { CreateExpenseController } from "./CreateExpenseController"
 import { CreateExpenseUseCase } from "./CreateExpenseUseCase"
 

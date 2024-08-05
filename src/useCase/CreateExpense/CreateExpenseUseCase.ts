@@ -1,10 +1,10 @@
-import { Expense } from "../../entities/Expense"
-import { IExpenseRepository } from "../../repositories/IExpenseRepository"
-import { formatCurrencyForPostgres } from "../../utils/currency"
+import { Expense } from "@/entities/Expense"
+import { IExpenseRepository } from "@/repositories/IExpenseRepository"
+import { formatCurrencyForPostgres } from "@/utils/currency"
 import { ICreateExpenseRequestDTO } from "./CreateExpenseDTO"
 
 export class CreateExpenseUseCase {
-  constructor(private expenseRepository: IExpenseRepository) {}
+  constructor(private expenseRepository: IExpenseRepository) { }
 
   async execute(data: ICreateExpenseRequestDTO) {
     const expense = new Expense(

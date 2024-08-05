@@ -1,15 +1,15 @@
-import { IUsersRepository } from "../../repositories/IUsersRepository"
+import { IUsersRepository } from "@/repositories/IUsersRepository"
 import { ICreateUserRequestDTO } from "./CreateUserDTO"
-import { User } from "../../entities/User"
-import { IMailProvider } from "../../providers/IMailProvider"
+import { User } from "@/entities/User"
+import { IMailProvider } from "@/providers/IMailProvider"
 import bcrypt from "bcrypt"
-import { bcryptSettings } from "../../config/auth"
+import { bcryptSettings } from "@/config/auth"
 
 export class CreateUserUseCase {
   constructor(
     private usersRepository: IUsersRepository,
     private mailProvider: IMailProvider,
-  ) {}
+  ) { }
 
   async execute(data: ICreateUserRequestDTO) {
     const userAlreadyExists = await this.usersRepository.findByEmail(data.email)

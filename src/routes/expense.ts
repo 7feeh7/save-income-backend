@@ -1,8 +1,8 @@
 import { Router } from "express"
-import { adaptMiddleware } from "../adapters/ExpressMiddlewareAdapter"
-import { makeAuthMiddleware } from "../middlewares/AuthMiddleware"
-import { createExpenseController } from "../useCase/CreateExpense"
-import { listExpenseController } from "../useCase/ListExpense"
+import { adaptMiddleware } from "@/adapters/ExpressMiddlewareAdapter"
+import { makeAuthMiddleware } from "@/middlewares/AuthMiddleware"
+import { createExpenseController } from "@/useCase/CreateExpense"
+import { listExpenseController } from "@/useCase/ListExpense"
 
 const expenseRouter = Router()
 

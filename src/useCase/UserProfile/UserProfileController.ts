@@ -1,9 +1,8 @@
 import { Request, Response } from "express"
-import { User } from "../../entities/User"
 import { UserProfileUseCase } from "./UserProfileUseCase"
 
 export class UserProfileController {
-  constructor(private userProfileUseCase: UserProfileUseCase) {}
+  constructor(private userProfileUseCase: UserProfileUseCase) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params

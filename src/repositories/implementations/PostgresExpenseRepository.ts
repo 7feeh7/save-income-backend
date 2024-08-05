@@ -1,7 +1,7 @@
-import { CategoryModel } from "../../database/models/Category"
-import { ExpenseModel } from "../../database/models/Expense"
-import { Expense } from "../../entities/Expense"
-import { IExpenseRepository } from "../IExpenseRepository"
+import { CategoryModel } from "@/database/models/Category"
+import { ExpenseModel } from "@/database/models/Expense"
+import { Expense } from "@/entities/Expense"
+import { IExpenseRepository } from "@/repositories/IExpenseRepository"
 
 export class PostgresExpenseRepository implements IExpenseRepository {
   async save(expense: Expense): Promise<void> {

@@ -1,4 +1,4 @@
-import { PostgresIncomeRepository } from "../../repositories/implementations/PostgresIncomesRepository"
+import { PostgresIncomeRepository } from "@/repositories/implementations/PostgresIncomesRepository"
 import { ListIncomeController } from "./ListIncomeController"
 import { ListIncomeUseCase } from "./ListIncomeUseCase"
 

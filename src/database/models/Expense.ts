@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize"
-import { sequelize } from "../sequelize"
+import { sequelize } from "@/database/sequelize"
 import { UserModel } from "./User"
 import { CategoryModel } from "./Category"
 

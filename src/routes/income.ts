@@ -1,8 +1,8 @@
 import { Router } from "express"
-import { adaptMiddleware } from "../adapters/ExpressMiddlewareAdapter"
-import { makeAuthMiddleware } from "../middlewares/AuthMiddleware"
-import { createIncomeController } from "../useCase/CreateIncome"
-import { listIncomeController } from "../useCase/ListIncome"
+import { adaptMiddleware } from "@/adapters/ExpressMiddlewareAdapter"
+import { makeAuthMiddleware } from "@/middlewares/AuthMiddleware"
+import { createIncomeController } from "@/useCase/CreateIncome"
+import { listIncomeController } from "@/useCase/ListIncome"
 
 const incomeRouter = Router()
 

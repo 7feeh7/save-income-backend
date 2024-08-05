@@ -1,12 +1,12 @@
-import { auth } from "../../config/auth"
-import { User } from "../../entities/User"
-import { IUsersRepository } from "../../repositories/IUsersRepository"
+import { auth } from "@/config/auth"
+import { User } from "@/entities/User"
+import { IUsersRepository } from "@/repositories/IUsersRepository"
 import { ILoginRequestDTO } from "./LoginDTO"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 export class LoginUseCase {
-  constructor(private usersRepository: IUsersRepository) {}
+  constructor(private usersRepository: IUsersRepository) { }
 
   async execute(data: ILoginRequestDTO) {
     const user = await this.usersRepository.findByEmail(data.email)

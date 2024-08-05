@@ -1,4 +1,4 @@
-import { Income } from "../entities/Income"
+import { Income } from "@/entities/Income"
 
 export interface IIncomeRepository {
   save(income: Income): Promise<void>
