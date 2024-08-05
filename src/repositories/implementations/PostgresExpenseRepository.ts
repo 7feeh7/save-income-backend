@@ -2,6 +2,7 @@ import { CategoryModel } from "@/database/models/Category"
 import { ExpenseModel } from "@/database/models/Expense"
 import { Expense } from "@/entities/Expense"
 import { IExpenseRepository } from "@/repositories/IExpenseRepository"
+import { calculatePagination } from "@/utils/paginationUtils"
 
 export class PostgresExpenseRepository implements IExpenseRepository {
   async save(expense: Expense): Promise<void> {
@@ -9,8 +10,15 @@ export class PostgresExpenseRepository implements IExpenseRepository {
       ...expense,
     })
   }
-  async getExpenseByUser(userId: string): Promise<any> {
-    return await ExpenseModel.findAll({
+
+  async getExpenseByUser(
+    userId: string,
+    page: number,
+    pageSize: number
+  ): Promise<any> {
+    const { offset, limit } = calculatePagination({ page, pageSize })
+
+    const { count, rows } = await ExpenseModel.findAndCountAll({
       include: [
         {
           attributes: ["id", "name"],
@@ -19,6 +27,10 @@ export class PostgresExpenseRepository implements IExpenseRepository {
         },
       ],
       where: { user_id: userId },
+      offset,
+      limit,
     })
+
+    return { data: rows, total: count }
   }
 }
