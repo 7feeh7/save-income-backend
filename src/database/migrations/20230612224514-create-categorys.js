@@ -1,9 +1,9 @@
-'use strict';
+"use strict"
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('categorys', {
+    await queryInterface.createTable("categorys", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -28,23 +28,43 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-    });
+    })
 
-    await queryInterface.bulkInsert('categorys', [
-      { name: 'Alimentação', created_at: new Date(), updated_at: new Date() },
-      { name: 'Moradia', created_at: new Date(), updated_at: new Date() },
-      { name: 'Transporte', created_at: new Date(), updated_at: new Date() },
-      { name: 'Saúde', created_at: new Date(), updated_at: new Date() },
-      { name: 'Educação', created_at: new Date(), updated_at: new Date() },
-      { name: 'Lazer e entretenimento', created_at: new Date(), updated_at: new Date() },
-      { name: 'Vestuário e acessórios', created_at: new Date(), updated_at: new Date() },
-      { name: 'Dívidas e empréstimos', created_at: new Date(), updated_at: new Date() },
-      { name: 'Impostos e taxas', created_at: new Date(), updated_at: new Date() },
-      { name: 'Presentes e doações', created_at: new Date(), updated_at: new Date() },
-    ]);
+    await queryInterface.bulkInsert("categorys", [
+      { name: "Alimentação", created_at: new Date(), updated_at: new Date() },
+      { name: "Moradia", created_at: new Date(), updated_at: new Date() },
+      { name: "Transporte", created_at: new Date(), updated_at: new Date() },
+      { name: "Saúde", created_at: new Date(), updated_at: new Date() },
+      { name: "Educação", created_at: new Date(), updated_at: new Date() },
+      {
+        name: "Lazer e entretenimento",
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        name: "Vestuário e acessórios",
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        name: "Dívidas e empréstimos",
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        name: "Impostos e taxas",
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        name: "Presentes e doações",
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+    ])
   },
 
   async down(queryInterface) {
-    await queryInterface.dropTable('categorys');
-  }
-};
+    await queryInterface.dropTable("categorys")
+  },
+}

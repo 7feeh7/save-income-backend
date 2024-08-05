@@ -1,29 +1,26 @@
-import { Request, Response } from "express";
-import { CreateExpenseUseCase } from "./CreateExpenseUseCase";
+import { Request, Response } from "express"
+import { CreateExpenseUseCase } from "./CreateExpenseUseCase"
 
 export class CreateExpenseController {
-    constructor(
-        private createExpenseUseCase: CreateExpenseUseCase
-    ) { }
+  constructor(private createExpenseUseCase: CreateExpenseUseCase) {}
 
-    async handle(request: Request, response: Response): Promise<Response> {
-        const { userId, categoryId, description, amount, isFixed } = request.body;
-        
-        try {
-            await this.createExpenseUseCase.execute({
-                userId,
-                categoryId,
-                description,
-                amount,
-                isFixed
-            });
+  async handle(request: Request, response: Response): Promise<Response> {
+    const { userId, categoryId, description, amount, isFixed } = request.body
 
-            return response.status(201).send();
-        } catch (err: unknown) {
-            return response.status(400).json({
-                message: (err as Error).message || 'Unexpected error.'
-            })
-        }
+    try {
+      await this.createExpenseUseCase.execute({
+        userId,
+        categoryId,
+        description,
+        amount,
+        isFixed,
+      })
+
+      return response.status(201).send()
+    } catch (err: unknown) {
+      return response.status(400).json({
+        message: (err as Error).message || "Unexpected error.",
+      })
     }
-
+  }
 }

@@ -1,9 +1,9 @@
-'use strict';
+"use strict"
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('expenses', {
+    await queryInterface.createTable("expenses", {
       id: {
         type: Sequelize.STRING,
         primaryKey: true,
@@ -12,21 +12,21 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: 'users',
-          key: 'id',
+          model: "users",
+          key: "id",
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       category_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'categorys',
-          key: 'id',
+          model: "categorys",
+          key: "id",
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       description: {
         type: Sequelize.STRING,
@@ -43,16 +43,16 @@ module.exports = {
       },
       created_at: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       },
       updated_at: {
         type: Sequelize.DATE,
-        allowNull: false
-      }
-    });
+        allowNull: false,
+      },
+    })
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('expenses');
-  }
-};
+    await queryInterface.dropTable("expenses")
+  },
+}

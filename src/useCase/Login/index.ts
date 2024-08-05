@@ -1,16 +1,11 @@
-import { PostgresUserRepository } from "../../repositories/implementations/PostgresUsersRepository";
-import { LoginController } from "./LoginController";
-import { LoginUseCase } from "./LoginUseCase";
+import { PostgresUserRepository } from "../../repositories/implementations/PostgresUsersRepository"
+import { LoginController } from "./LoginController"
+import { LoginUseCase } from "./LoginUseCase"
 
-const postgresUserRepository = new PostgresUserRepository();
+const postgresUserRepository = new PostgresUserRepository()
 
+const loginUseCase = new LoginUseCase(postgresUserRepository)
 
-const loginUseCase = new LoginUseCase(
-    postgresUserRepository
-);
+const loginController = new LoginController(loginUseCase)
 
-const loginController = new LoginController(
-    loginUseCase
-);
-
-export { loginUseCase, loginController };
+export { loginUseCase, loginController }

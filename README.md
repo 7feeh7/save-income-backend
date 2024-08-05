@@ -13,7 +13,7 @@ Save-Income é um projeto Node.js que permite aos usuários gerenciar suas recei
 - [PostgreSQL](https://www.postgresql.org/)
 - [bcrypt](https://www.npmjs.com/package/bcrypt)
 - [jsonwebtoken](https://jwt.io/)
-- Princípios de SOLID 
+- Princípios de SOLID
 
 ## Features
 
@@ -28,15 +28,15 @@ Save-Income é um projeto Node.js que permite aos usuários gerenciar suas recei
 
 1. Clonar o repositório:
 
-    ```bash
-    git clone https://github.com/7feeh7/save-income-backend.git
-    ```
+   ```bash
+   git clone https://github.com/7feeh7/save-income-backend.git
+   ```
 
 2. Instalando as dependências:
-    
-    ```bash
-    npm install
-    ```
+
+   ```bash
+   npm install
+   ```
 
 3. Configurar banco de dados:
 
@@ -44,16 +44,16 @@ Save-Income é um projeto Node.js que permite aos usuários gerenciar suas recei
 - Renomeie o arquivo .env.example para .env e atualize os detalhes da conexão do banco de dados
 
 4. Construir o projeto:
-    
-    ```bash
-    npm run prestart
-    ```
+
+   ```bash
+   npm run prestart
+   ```
 
 5. Inicie o servidor:
-    
-    ```bash
-    npm run dev
-    ```
+
+   ```bash
+   npm run dev
+   ```
 
 6. O servidor agora deve estar em execução em http://localhost:3333.
 
@@ -65,12 +65,10 @@ A documentação da API estará disponível [aqui]().
 
 Contribuições para o projeto são bem vindas! Pra contribuir com o projeto, siga estas etapas:
 
-
 1. De um fork no repositorio.
 2. Crie uma nova branch para sua feature ou bug fix.
 3. Faça suas alterações, confirmando e pressionando conforme necessário.
 4. Envie uma solicitação pull com uma descrição detalhada de suas alterações.
-
 
 ## Contato
 

@@ -1,15 +1,13 @@
-import { PostgresExpenseRepository } from "../../repositories/implementations/PostgresExpenseRepository";
-import { CreateExpenseController } from "./CreateExpenseController";
-import { CreateExpenseUseCase } from "./CreateExpenseUseCase";
+import { PostgresExpenseRepository } from "../../repositories/implementations/PostgresExpenseRepository"
+import { CreateExpenseController } from "./CreateExpenseController"
+import { CreateExpenseUseCase } from "./CreateExpenseUseCase"
 
-const postgresExpenseRepository = new PostgresExpenseRepository();
+const postgresExpenseRepository = new PostgresExpenseRepository()
 
-const createExpenseUseCase = new CreateExpenseUseCase(
-    postgresExpenseRepository
-);
+const createExpenseUseCase = new CreateExpenseUseCase(postgresExpenseRepository)
 
 const createExpenseController = new CreateExpenseController(
-    createExpenseUseCase
-);
+  createExpenseUseCase,
+)
 
-export { createExpenseUseCase, createExpenseController };
+export { createExpenseUseCase, createExpenseController }

@@ -1,10 +1,10 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv"
 
-dotenv.config();
+dotenv.config()
 
 export const auth = {
-  secretKey: process.env.AUTH_SECRET_KEY || '',
-  expiresIn: "1d"
-};
+  secretKey: process.env.AUTH_SECRET_KEY || "",
+  expiresIn: "1d",
+}
 
-export const bcryptSettings = { salts: 10 };
+export const bcryptSettings = { salts: 10 }

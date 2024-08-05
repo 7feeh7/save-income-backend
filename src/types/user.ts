@@ -1,7 +1,7 @@
 export class IUser {
-    id: string;
-  
-    constructor(val: any) {
-      Object.assign(this, val);
-    }
+  id: string
+
+  constructor(val: any) {
+    Object.assign(this, val)
   }
+}

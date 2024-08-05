@@ -1,9 +1,9 @@
-'use strict';
+"use strict"
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable("users", {
       id: {
         type: Sequelize.STRING,
         primaryKey: true,
@@ -32,11 +32,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'roles',
-          key: 'id',
+          model: "roles",
+          key: "id",
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
         defaultValue: 2,
       },
       last_acess: {
@@ -50,16 +50,16 @@ module.exports = {
       },
       created_at: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       },
       updated_at: {
         type: Sequelize.DATE,
-        allowNull: false
-      }
-    });
+        allowNull: false,
+      },
+    })
   },
 
   async down(queryInterface) {
-    return queryInterface.dropTable('users');
-  }
-};
+    return queryInterface.dropTable("users")
+  },
+}
