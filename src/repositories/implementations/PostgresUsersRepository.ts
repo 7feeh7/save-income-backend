@@ -6,7 +6,10 @@ import { IUsersRepository } from "../IUsersRepository";
 export class PostgresUserRepository implements IUsersRepository {
 
     async findByEmail(email: string): Promise<any> {
-        return UserModel.findOne({ where: { email } });
+        return await UserModel.findOne({
+            where: { email },
+            raw: true
+        });
     }
 
     async save(user: User): Promise<void> {
@@ -44,7 +47,7 @@ export class PostgresUserRepository implements IUsersRepository {
     }
 
     async existUserWithToken(id: string, token: string): Promise<any> {
-        return await UserModel.findOne({ 
+        return await UserModel.findOne({
             attributes: [
                 "id",
                 "name",
@@ -57,8 +60,8 @@ export class PostgresUserRepository implements IUsersRepository {
                     as: "role",
                 },
             ],
-            where: { id, token }, 
-            raw: true 
+            where: { id, token },
+            raw: true
         });
     }
 }

@@ -25,7 +25,7 @@ export class LoginUseCase {
     }
 
     private async setToken(user: User) {
-        const token = jwt.sign({ id: user.id}, auth.secretKey, { expiresIn: auth.expiresIn });
+        const token = jwt.sign({ id: user.id }, auth.secretKey, { expiresIn: auth.expiresIn });
         await this.usersRepository.refreshToken(user.id, token, new Date());
         return token;
     }
