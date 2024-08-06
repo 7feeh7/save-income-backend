@@ -67,4 +67,11 @@ export class PostgresUserRepository implements IUsersRepository {
       { where: { id: user.id } }
     )
   }
+
+  async delete(id: string): Promise<void> {
+    await UserModel.update(
+      { isActive: false },
+      { where: { id } }
+    )
+  }
 }

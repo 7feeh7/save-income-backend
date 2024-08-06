@@ -8,4 +8,5 @@ export interface IUsersRepository {
   existUserWithToken(id: string, token: string): Promise<User>
   findById(id: string): Promise<User>
   update(user: any): Promise<void>
+  delete(id: string): Promise<void>
 }
