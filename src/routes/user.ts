@@ -3,6 +3,7 @@ import { adaptMiddleware } from "@/adapters/ExpressMiddlewareAdapter"
 import { makeAuthMiddleware } from "@/middlewares/AuthMiddleware"
 import { createUserController } from "@/useCase/CreateUser"
 import { userProfileController } from "@/useCase/UserProfile"
+import { updateUserController } from "@/useCase/UpdateUser"
 
 const userRouter = Router()
 const userAuthenticatedRouter = Router()
@@ -15,6 +16,10 @@ userRouter.post("/", (request, response) => {
 
 userAuthenticatedRouter.get("/:id", (request, response) => {
   return userProfileController.handle(request, response)
+})
+
+userAuthenticatedRouter.patch("/:id", (request, response) => {
+  return updateUserController.handle(request, response)
 })
 
 export { userRouter, userAuthenticatedRouter }

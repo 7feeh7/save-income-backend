@@ -6,4 +6,6 @@ export interface IUsersRepository {
   userProfile(id: string): Promise<User>
   refreshToken(id: unknown, token: string, lastAcess: Date): Promise<void>
   existUserWithToken(id: string, token: string): Promise<User>
+  findById(id: string): Promise<User>
+  update(user: any): Promise<void>
 }

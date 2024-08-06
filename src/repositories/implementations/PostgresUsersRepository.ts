@@ -53,4 +53,18 @@ export class PostgresUserRepository implements IUsersRepository {
       raw: true,
     })
   }
+
+  async findById(id: string): Promise<any> {
+    return await UserModel.findOne({
+      where: { id },
+      raw: true,
+    })
+  }
+
+  async update(user: any): Promise<void> {
+    await UserModel.update(
+      user,
+      { where: { id: user.id } }
+    )
+  }
 }
