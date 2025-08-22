@@ -4,6 +4,7 @@ import { IUsersRepository } from "@/repositories/IUsersRepository"
 import { ILoginRequestDTO } from "./LoginDTO"
 import jwt from "jsonwebtoken"
 import { IPasswordHasher } from "@/providers/IPasswordHasher"
+import { UnauthorizedException } from "@/shared/exceptions/UnauthorizedException"
 
 export class LoginUseCase {
   constructor(
@@ -13,7 +14,11 @@ export class LoginUseCase {
 
   async execute(data: ILoginRequestDTO) {
     const { email, password } = data
+
     const user = await this.usersRepository.findByEmail(email)
+
+    if (!user) throw new UnauthorizedException("Invalid email or password.")
+
 
     await this.validatePassword(password, user.password)
 
@@ -23,7 +28,7 @@ export class LoginUseCase {
   private async validatePassword(password: string, dbhash: string) {
     const isValidPassword = await this.hasher.compare(password, dbhash)
 
-    if (!isValidPassword) throw new Error("Invalid email or password.")
+    if (!isValidPassword) throw new UnauthorizedException("Invalid email or password.")
   }
 
   private async setToken(user: User) {

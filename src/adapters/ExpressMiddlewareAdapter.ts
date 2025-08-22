@@ -1,6 +1,7 @@
+import { AuthMiddleware } from "@/middlewares/AuthMiddleware"
 import { NextFunction, Request, Response } from "express"
 
-export const adaptMiddleware = (middleware: any) => {
+export const adaptMiddleware = (middleware: AuthMiddleware) => {
   return async (request: Request, response: Response, next: NextFunction) => {
     try {
       const httpResponse = await middleware.handle(request)
