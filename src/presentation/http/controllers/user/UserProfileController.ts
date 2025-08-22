@@ -1,5 +1,5 @@
+import { UserProfileUseCase } from "@/domain/useCase/user/UserProfile/UserProfileUseCase"
 import { Request, Response } from "express"
-import { UserProfileUseCase } from "../../../../domain/useCase/user/UserProfile/UserProfileUseCase"
 
 export class UserProfileController {
   constructor(private userProfileUseCase: UserProfileUseCase) { }

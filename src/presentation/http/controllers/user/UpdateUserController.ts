@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
-import { UpdateUserUseCase } from "../../../../domain/useCase/user/UpdateUser/UpdateUserUseCase"
 import { HttpStatus } from "@/shared/http/HttpStatus"
+import { UpdateUserUseCase } from "@/domain/useCase/user/UpdateUser/UpdateUserUseCase"
 
 export class CreateUserController {
   constructor(private updateUserUseCase: UpdateUserUseCase) { }
