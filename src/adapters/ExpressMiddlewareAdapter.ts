@@ -7,8 +7,8 @@ export const adaptMiddleware = (middleware: AuthMiddleware) => {
       const httpResponse = await middleware.handle(request)
       Object.assign(request, httpResponse)
       return next()
-    } catch (e) {
-      return response.status(401).json("AccessDenied")
+    } catch (err) {
+      return next(err)
     }
   }
 }
