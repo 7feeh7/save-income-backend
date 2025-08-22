@@ -2,22 +2,26 @@ import { auth } from "@/config/auth"
 import { User } from "@/entities/User"
 import { IUsersRepository } from "@/repositories/IUsersRepository"
 import { ILoginRequestDTO } from "./LoginDTO"
-import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import { IPasswordHasher } from "@/providers/IPasswordHasher"
 
 export class LoginUseCase {
-  constructor(private usersRepository: IUsersRepository) { }
+  constructor(
+    private usersRepository: IUsersRepository,
+    private hasher: IPasswordHasher,
+  ) { }
 
   async execute(data: ILoginRequestDTO) {
-    const user = await this.usersRepository.findByEmail(data.email)
+    const { email, password } = data
+    const user = await this.usersRepository.findByEmail(email)
 
-    await this.validatePassword(data.password, user.password)
+    await this.validatePassword(password, user.password)
 
     return await this.setToken(user)
   }
 
   private async validatePassword(password: string, dbhash: string) {
-    const isValidPassword = await bcrypt.compare(password, dbhash)
+    const isValidPassword = await this.hasher.compare(password, dbhash)
 
     if (!isValidPassword) throw new Error("Invalid email or password.")
   }

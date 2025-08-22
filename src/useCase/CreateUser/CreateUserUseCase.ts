@@ -2,41 +2,34 @@ import { IUsersRepository } from "@/repositories/IUsersRepository"
 import { ICreateUserRequestDTO } from "./CreateUserDTO"
 import { User } from "@/entities/User"
 import { IMailProvider } from "@/providers/IMailProvider"
-import bcrypt from "bcrypt"
-import { bcryptSettings } from "@/config/auth"
+import { IPasswordHasher } from "@/providers/IPasswordHasher"
 
 export class CreateUserUseCase {
   constructor(
     private usersRepository: IUsersRepository,
     private mailProvider: IMailProvider,
+    private hasher: IPasswordHasher,
   ) { }
 
   async execute(data: ICreateUserRequestDTO) {
-    const userAlreadyExists = await this.usersRepository.findByEmail(data.email)
+    const { name, email, phone, password, role_id } = data
+
+    const userAlreadyExists = await this.usersRepository.findByEmail(email)
 
     if (userAlreadyExists) {
       throw new Error("User already exists.")
     }
 
-    const hashedPassword = await bcrypt.hash(
-      data.password,
-      bcryptSettings.salts,
-    )
+    const hashedPassword = await this.hasher.hash(password)
 
-    const user = new User(
-      data.name,
-      data.email,
-      data.phone,
-      hashedPassword,
-      data.role_id,
-    )
+    const user = new User(name, email, phone, hashedPassword, role_id)
 
     await this.usersRepository.save(user)
 
     await this.mailProvider.sendMail({
       to: {
-        name: data.name,
-        email: data.email,
+        name: name,
+        email: email,
       },
       from: {
         name: "Equipe Money App",
