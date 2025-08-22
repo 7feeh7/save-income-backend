@@ -49,7 +49,7 @@ describe("CreateUserController", () => {
     })
 
     it("deve retornar erro quando ocorrer erro inesperado", async () => {
-        const someError = new Error("Internal server error")
+        const someError = new Error("Internal Server Error")
 
         const createUserUseCase = {
             execute: jest.fn().mockRejectedValue(someError)

@@ -6,12 +6,14 @@ export class DeleteUserUseCase {
   constructor(private usersRepository: IUsersRepository) { }
 
   async execute(data: IDeleteUserRequestDTO) {
-    const user = await this.usersRepository.findById(data.id)
+    const { id } = data
+
+    const user = await this.usersRepository.findById(id)
 
     if (!user) {
       throw new NotFoundException("User not found.")
     }
 
-    await this.usersRepository.delete(data.id)
+    await this.usersRepository.delete(id)
   }
 }
