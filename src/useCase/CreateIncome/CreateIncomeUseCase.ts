@@ -1,6 +1,6 @@
 import { Income } from "@/entities/Income"
 import { IIncomeRepository } from "@/repositories/IIncomeRepository"
-import { formatCurrencyForPostgres } from "@/utils/currency"
+import { formatCurrencyForPostgres } from "@/shared/utils/currency"
 import { ICreateIncomeRequestDTO } from "./CreateIncomeDTO"
 
 export class CreateIncomeUseCase {

@@ -2,7 +2,7 @@ import { CategoryModel } from "@/database/models/Category"
 import { ExpenseModel } from "@/database/models/Expense"
 import { Expense } from "@/entities/Expense"
 import { IExpenseRepository } from "@/repositories/IExpenseRepository"
-import { calculatePagination } from "@/utils/paginationUtils"
+import { calculatePagination } from "@/shared/utils/paginationUtils"
 
 export class PostgresExpenseRepository implements IExpenseRepository {
   async save(expense: Expense): Promise<void> {

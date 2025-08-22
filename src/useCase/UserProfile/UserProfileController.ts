@@ -7,13 +7,8 @@ export class UserProfileController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params
 
-    try {
-      const userProfile = await this.userProfileUseCase.execute(id)
-      return response.json(userProfile)
-    } catch (err: unknown) {
-      return response.status(500).json({
-        message: (err as Error).message || "Unexpected error.",
-      })
-    }
+    const userProfile = await this.userProfileUseCase.execute(id)
+
+    return response.json(userProfile)
   }
 }

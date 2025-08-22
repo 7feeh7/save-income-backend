@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { ListExpenseUseCase } from "./ListExpenseUseCase"
 import { IUser } from "./ListExpenseDTO"
-import { parseQueryParamToNumber } from "@/utils/parseQueryParamToNumber"
+import { parseQueryParamToNumber } from "@/shared/utils/parseQueryParamToNumber"
 
 export class ListExpenseController {
   constructor(private listExpenseUseCase: ListExpenseUseCase) { }

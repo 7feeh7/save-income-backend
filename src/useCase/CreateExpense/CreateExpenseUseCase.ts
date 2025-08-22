@@ -1,6 +1,6 @@
 import { Expense } from "@/entities/Expense"
 import { IExpenseRepository } from "@/repositories/IExpenseRepository"
-import { formatCurrencyForPostgres } from "@/utils/currency"
+import { formatCurrencyForPostgres } from "@/shared/utils/currency"
 import { ICreateExpenseRequestDTO } from "./CreateExpenseDTO"
 
 export class CreateExpenseUseCase {

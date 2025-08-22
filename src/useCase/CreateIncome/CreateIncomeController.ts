@@ -1,24 +1,15 @@
 import { Request, Response } from "express"
 import { CreateIncomeUseCase } from "./CreateIncomeUseCase"
+import { HttpStatus } from "@/shared/http/HttpStatus"
 
 export class CreateIncomeController {
-  constructor(private createIncomeUseCase: CreateIncomeUseCase) {}
+  constructor(private createIncomeUseCase: CreateIncomeUseCase) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { userId, description, amount } = request.body
 
-    try {
-      await this.createIncomeUseCase.execute({
-        userId,
-        description,
-        amount,
-      })
+    await this.createIncomeUseCase.execute({ userId, description, amount })
 
-      return response.status(201).send()
-    } catch (err: unknown) {
-      return response.status(400).json({
-        message: (err as Error).message || "Unexpected error.",
-      })
-    }
+    return response.status(HttpStatus.NO_CONTENT).send()
   }
 }

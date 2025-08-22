@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken"
 import { auth } from "../config/auth"
 import { PostgresUserRepository } from "@/repositories/implementations/PostgresUsersRepository"
 import { IUsersRepository } from "@/repositories/IUsersRepository"
+import { HttpStatus } from "@/shared/http/HttpStatus"
 
 interface TokenPayload {
   id: string
@@ -30,7 +31,7 @@ export class AuthMiddleware {
     if (!user) throw new Error("Access Denied")
 
     return {
-      statusCode: 200,
+      statusCode: HttpStatus.OK,
       headers: { userLoggerIn: user },
     }
   }
