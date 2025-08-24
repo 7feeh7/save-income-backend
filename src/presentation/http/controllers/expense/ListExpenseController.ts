@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
-import { ListExpenseUseCase } from "../../../../domain/useCase/expense/ListExpense/ListExpenseUseCase"
-import { IUser } from "../../../../domain/useCase/expense/ListExpense/ListExpenseDTO"
 import { parseQueryParamToNumber } from "@/shared/utils/parseQueryParamToNumber"
+import { IUser } from "@/domain/useCase/expense/ListExpense/ListExpenseDTO"
+import { ListExpenseUseCase } from "@/domain/useCase/expense/ListExpense/ListExpenseUseCase"
 
 export class ListExpenseController {
   constructor(private listExpenseUseCase: ListExpenseUseCase) { }
@@ -11,17 +11,11 @@ export class ListExpenseController {
 
     const { page, limit } = request.query
 
-    try {
-      const expenses = await this.listExpenseUseCase.execute({
-        id,
-        page: parseQueryParamToNumber(page),
-        limit: parseQueryParamToNumber(limit)
-      })
-      return response.json(expenses)
-    } catch (err: unknown) {
-      return response.status(500).json({
-        message: (err as Error).message || "Unexpected error.",
-      })
-    }
+    const expenses = await this.listExpenseUseCase.execute({
+      id,
+      page: parseQueryParamToNumber(page),
+      limit: parseQueryParamToNumber(limit)
+    })
+    return response.json(expenses)
   }
 }
