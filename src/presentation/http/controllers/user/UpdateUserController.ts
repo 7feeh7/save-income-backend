@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 import { HttpStatus } from "@/shared/http/HttpStatus"
 import { UpdateUserUseCase } from "@/domain/useCase/user/UpdateUser/UpdateUserUseCase"
 
-export class CreateUserController {
+export class UpdateUserController {
   constructor(private updateUserUseCase: UpdateUserUseCase) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
