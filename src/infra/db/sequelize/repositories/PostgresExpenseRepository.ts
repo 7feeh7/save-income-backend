@@ -32,7 +32,7 @@ export class PostgresExpenseRepository implements IExpenseRepository {
       offset,
       limit,
     })
-
+    
     return { data: rows, total: count }
   }
 
