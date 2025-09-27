@@ -2,7 +2,7 @@ import { UserProfileUseCase } from "@/domain/useCase/user/UserProfile/UserProfil
 import { Request, Response } from "express"
 
 export class UserProfileController {
-  constructor(private userProfileUseCase: UserProfileUseCase) { }
+  constructor(private userProfileUseCase: UserProfileUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params

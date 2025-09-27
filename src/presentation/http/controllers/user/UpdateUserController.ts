@@ -3,7 +3,7 @@ import { HttpStatus } from "@/shared/http/HttpStatus"
 import { UpdateUserUseCase } from "@/domain/useCase/user/UpdateUser/UpdateUserUseCase"
 
 export class UpdateUserController {
-  constructor(private updateUserUseCase: UpdateUserUseCase) { }
+  constructor(private updateUserUseCase: UpdateUserUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params

@@ -13,7 +13,7 @@ interface TokenPayload {
 }
 
 export class AuthMiddleware {
-  constructor(private usersRepository: IUsersRepository) { }
+  constructor(private usersRepository: IUsersRepository) {}
   async handle(request: Request) {
     const { authorization } = request.headers
 

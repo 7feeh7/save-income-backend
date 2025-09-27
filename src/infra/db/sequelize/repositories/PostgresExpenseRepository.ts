@@ -14,7 +14,7 @@ export class PostgresExpenseRepository implements IExpenseRepository {
   async getExpenseByUser(
     userId: string,
     page: number,
-    pageSize: number
+    pageSize: number,
   ): Promise<any> {
     const { offset, limit } = calculatePagination({ page, pageSize })
 

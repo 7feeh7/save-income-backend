@@ -10,7 +10,7 @@ export class CreateUserUseCase {
     private usersRepository: IUsersRepository,
     private mailProvider: IMailProvider,
     private hasher: IPasswordHasher,
-  ) { }
+  ) {}
 
   async execute(data: ICreateUserRequestDTO) {
     const { name, email, phone, password, role_id } = data

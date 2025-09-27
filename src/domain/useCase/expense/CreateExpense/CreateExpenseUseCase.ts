@@ -4,7 +4,7 @@ import { formatCurrencyForPostgres } from "@/shared/utils/currency"
 import { ICreateExpenseRequestDTO } from "./CreateExpenseDTO"
 
 export class CreateExpenseUseCase {
-  constructor(private expenseRepository: IExpenseRepository) { }
+  constructor(private expenseRepository: IExpenseRepository) {}
 
   async execute(data: ICreateExpenseRequestDTO) {
     const expense = new Expense(

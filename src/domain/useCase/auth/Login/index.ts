@@ -7,7 +7,10 @@ const postgresUserRepository = new PostgresUserRepository()
 
 const bcryptPasswordHasherProvider = new BcryptPasswordHasherProvider()
 
-const loginUseCase = new LoginUseCase(postgresUserRepository, bcryptPasswordHasherProvider)
+const loginUseCase = new LoginUseCase(
+  postgresUserRepository,
+  bcryptPasswordHasherProvider,
+)
 
 const loginController = new LoginController(loginUseCase)
 

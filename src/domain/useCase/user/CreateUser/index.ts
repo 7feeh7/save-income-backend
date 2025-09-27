@@ -12,7 +12,7 @@ const bcryptPasswordHasherProvider = new BcryptPasswordHasherProvider()
 const createUserUseCase = new CreateUserUseCase(
   postgresUserRepository,
   mailtrapMailProvider,
-  bcryptPasswordHasherProvider
+  bcryptPasswordHasherProvider,
 )
 
 const createUserController = new CreateUserController(createUserUseCase)

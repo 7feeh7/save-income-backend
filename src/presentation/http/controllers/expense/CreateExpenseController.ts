@@ -3,7 +3,7 @@ import { HttpStatus } from "@/shared/http/HttpStatus"
 import { CreateExpenseUseCase } from "@/domain/useCase/expense/CreateExpense/CreateExpenseUseCase"
 
 export class CreateExpenseController {
-  constructor(private createExpenseUseCase: CreateExpenseUseCase) { }
+  constructor(private createExpenseUseCase: CreateExpenseUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { userId, categoryId, description, amount, isFixed } = request.body
@@ -13,7 +13,7 @@ export class CreateExpenseController {
       categoryId,
       description,
       amount,
-      isFixed
+      isFixed,
     })
 
     return response.status(HttpStatus.NO_CONTENT).send()

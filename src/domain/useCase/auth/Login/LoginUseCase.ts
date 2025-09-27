@@ -10,7 +10,7 @@ export class LoginUseCase {
   constructor(
     private usersRepository: IUsersRepository,
     private hasher: IPasswordHasher,
-  ) { }
+  ) {}
 
   async execute(data: ILoginRequestDTO) {
     const { email, password } = data
@@ -18,7 +18,6 @@ export class LoginUseCase {
     const user = await this.usersRepository.findByEmail(email)
 
     if (!user) throw new UnauthorizedException("Invalid email or password.")
-
 
     await this.validatePassword(password, user.password)
 
@@ -28,7 +27,8 @@ export class LoginUseCase {
   private async validatePassword(password: string, dbhash: string) {
     const isValidPassword = await this.hasher.compare(password, dbhash)
 
-    if (!isValidPassword) throw new UnauthorizedException("Invalid email or password.")
+    if (!isValidPassword)
+      throw new UnauthorizedException("Invalid email or password.")
   }
 
   private async setToken(user: User) {

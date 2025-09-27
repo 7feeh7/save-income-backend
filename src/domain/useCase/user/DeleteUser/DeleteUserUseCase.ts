@@ -3,7 +3,7 @@ import { IDeleteUserRequestDTO } from "./DeleteUserDTO"
 import { NotFoundException } from "@/shared/exceptions/NotFoundException"
 
 export class DeleteUserUseCase {
-  constructor(private usersRepository: IUsersRepository) { }
+  constructor(private usersRepository: IUsersRepository) {}
 
   async execute(data: IDeleteUserRequestDTO) {
     const { id } = data

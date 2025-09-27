@@ -3,7 +3,7 @@ import { HttpStatus } from "@/shared/http/HttpStatus"
 import { Request, Response } from "express"
 
 export class DeleteUserController {
-  constructor(private deleteUserUseCase: DeleteUserUseCase) { }
+  constructor(private deleteUserUseCase: DeleteUserUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params
