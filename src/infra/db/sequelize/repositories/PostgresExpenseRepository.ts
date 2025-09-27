@@ -3,6 +3,8 @@ import { ExpenseModel } from "@/infra/db/sequelize/models/Expense"
 import { Expense } from "@/domain/entities/Expense"
 import { IExpenseRepository } from "@/domain/repositories/IExpenseRepository"
 import { calculatePagination } from "@/shared/utils/paginationUtils"
+import { GetTotalExpenseDTO } from "@/domain/useCase/expense/GetTotalExpense/GetTotalExpenseDTO"
+import { Op } from "sequelize"
 
 export class PostgresExpenseRepository implements IExpenseRepository {
   async save(expense: Expense): Promise<void> {
@@ -32,5 +34,21 @@ export class PostgresExpenseRepository implements IExpenseRepository {
     })
 
     return { data: rows, total: count }
+  }
+
+  async getSumByPeriod(params: GetTotalExpenseDTO): Promise<number> {
+    const { id, startDate, endDate } = params
+
+    const sum = await ExpenseModel.sum("amount", {
+      where: {
+        userId: id,
+        createdAt: {
+          [Op.gte]: startDate,
+          [Op.lt]: endDate
+        },
+      },
+    });
+
+    return Number(sum || 0);
   }
 }
