@@ -1,4 +1,3 @@
-import { logger } from "@/shared/logger/logger"
 import dotenv from "dotenv"
 dotenv.config()
 
@@ -15,5 +14,4 @@ export const development: Options = {
     timestamps: true,
     underscored: true,
   },
-  logging: (msg) => logger.debug(msg),
 }

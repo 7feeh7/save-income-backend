@@ -7,7 +7,6 @@ const categoryRouter = Router()
 
 categoryRouter.use(adaptMiddleware(makeAuthMiddleware()))
 
-
 categoryRouter.get("/", (request, response) => {
   return listCategoryController.handle(request, response)
 })

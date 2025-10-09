@@ -3,7 +3,10 @@ import { adaptMiddleware } from "@/presentation/http/adapters/ExpressMiddlewareA
 import { makeAuthMiddleware } from "../middlewares/AuthMiddleware"
 import { createIncomeController } from "@/domain/useCase/income/CreateIncome"
 import { listIncomeController } from "@/domain/useCase/income/ListIncome"
-import { validateBody, validateQuery } from "../middlewares/validation.middleware"
+import {
+  validateBody,
+  validateQuery,
+} from "../middlewares/validation.middleware"
 import { createIncomeSchema } from "../validators/income/createIncome.schema"
 import { getTotalIncomeController } from "@/domain/useCase/income/GetTotalIncome"
 import { totalIncomeSchema } from "../validators/income/totalIncome.schema"
@@ -102,10 +105,12 @@ incomeRouter.get("/", (request, response) => {
  *                   type: string
  *                   example: "Internal Server Error"
  */
-incomeRouter.get("/total",
+incomeRouter.get(
+  "/total",
   validateQuery(totalIncomeSchema),
   (request, response) => {
     return getTotalIncomeController.handle(request, response)
-  })
+  },
+)
 
 export { incomeRouter }

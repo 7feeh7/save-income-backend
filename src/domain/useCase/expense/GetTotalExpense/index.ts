@@ -4,8 +4,12 @@ import { PostgresExpenseRepository } from "@/infra/db/sequelize/repositories/Pos
 
 const postgresExpenseRepository = new PostgresExpenseRepository()
 
-const getTotalExpenseUseCase = new GetTotalExpenseUseCase(postgresExpenseRepository)
+const getTotalExpenseUseCase = new GetTotalExpenseUseCase(
+  postgresExpenseRepository,
+)
 
-const getTotalExpenseController = new GetTotalExpenseController(getTotalExpenseUseCase)
+const getTotalExpenseController = new GetTotalExpenseController(
+  getTotalExpenseUseCase,
+)
 
 export { getTotalExpenseUseCase, getTotalExpenseController }

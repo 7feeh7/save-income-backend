@@ -12,7 +12,7 @@ export class ListIncomeController {
     const { page, limit } = request.query
 
     const incomes = await this.listIncomeUseCase.execute({
-      id, 
+      id,
       page: parseQueryParamToNumber(page),
       limit: parseQueryParamToNumber(limit),
     })

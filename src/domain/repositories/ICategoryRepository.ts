@@ -1,3 +1,3 @@
 export interface ICategoryRepository {
-    listCategory(): Promise<any>
+  listCategory(): Promise<any>
 }

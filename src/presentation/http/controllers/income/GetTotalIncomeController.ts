@@ -3,7 +3,7 @@ import { GetTotalIncomeUseCase } from "@/domain/useCase/income/GetTotalIncome/Ge
 import { Request, Response } from "express"
 
 export class GetTotalIncomeController {
-  constructor(private getTotalIncomeUseCase: GetTotalIncomeUseCase) { }
+  constructor(private getTotalIncomeUseCase: GetTotalIncomeUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = new IUser(request.headers.userLoggerIn)
@@ -13,7 +13,7 @@ export class GetTotalIncomeController {
     const sum = await this.getTotalIncomeUseCase.execute({
       id,
       startDate: new Date(startDate as string),
-      endDate: new Date(endDate as string)
+      endDate: new Date(endDate as string),
     })
 
     return response.json({ total: sum })

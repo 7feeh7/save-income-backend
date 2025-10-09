@@ -6,9 +6,14 @@ export class CreateIncomeController {
   constructor(private createIncomeUseCase: CreateIncomeUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { userId, description, amount } = request.body
+    const { userId, description, amount, date } = request.body
 
-    await this.createIncomeUseCase.execute({ userId, description, amount })
+    await this.createIncomeUseCase.execute({
+      userId,
+      description,
+      amount,
+      date,
+    })
 
     return response.status(HttpStatus.NO_CONTENT).send()
   }

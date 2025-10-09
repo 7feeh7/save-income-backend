@@ -4,7 +4,8 @@ import { Expense } from "@/domain/entities/Expense"
 import { IExpenseRepository } from "@/domain/repositories/IExpenseRepository"
 import { calculatePagination } from "@/shared/utils/paginationUtils"
 import { GetTotalExpenseDTO } from "@/domain/useCase/expense/GetTotalExpense/GetTotalExpenseDTO"
-import { Op } from "sequelize"
+import { Op, WhereOptions} from "sequelize"
+import { ExpenseListResult, ListExpenseDTO } from "@/domain/useCase/expense/ListExpense/ListExpenseDTO"
 
 export class PostgresExpenseRepository implements IExpenseRepository {
   async save(expense: Expense): Promise<void> {
@@ -13,12 +14,16 @@ export class PostgresExpenseRepository implements IExpenseRepository {
     })
   }
 
-  async getExpenseByUser(
-    userId: string,
-    page: number,
-    pageSize: number,
-  ): Promise<any> {
+  async getExpenseByUser(params: ListExpenseDTO): Promise<ExpenseListResult> {
+    const { id, page, pageSize, order, orderDirection, categoryId, isFixed } = params
+
     const { offset, limit } = calculatePagination({ page, pageSize })
+
+    const whereOptions: WhereOptions = { user_id: id }
+
+    if(categoryId) whereOptions.categoryId = categoryId
+
+    if(isFixed) whereOptions.isFixed = isFixed
 
     const { count, rows } = await ExpenseModel.findAndCountAll({
       include: [
@@ -28,11 +33,12 @@ export class PostgresExpenseRepository implements IExpenseRepository {
           as: "category",
         },
       ],
-      where: { user_id: userId },
+      where: whereOptions,
       offset,
       limit,
+      order: [[order, orderDirection]]
     })
-    
+
     return { data: rows, total: count }
   }
 
@@ -44,11 +50,11 @@ export class PostgresExpenseRepository implements IExpenseRepository {
         userId: id,
         createdAt: {
           [Op.gte]: startDate,
-          [Op.lt]: endDate
+          [Op.lt]: endDate,
         },
       },
-    });
+    })
 
-    return Number(sum || 0);
+    return Number(sum || 0)
   }
 }

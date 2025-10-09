@@ -11,6 +11,7 @@ export class CreateIncomeUseCase {
       data.userId,
       data.description,
       Number(formatCurrencyForPostgres(data.amount)),
+      new Date(data.date),
     )
 
     await this.incomeRepository.save(income)

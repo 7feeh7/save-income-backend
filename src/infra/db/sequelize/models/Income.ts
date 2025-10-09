@@ -7,6 +7,7 @@ export class IncomeModel extends Model {
   public userId!: string
   public description!: string
   public amount!: number
+  public date!: Date
 
   public readonly createdAt!: Date
   public readonly updatedAt!: Date
@@ -30,6 +31,10 @@ IncomeModel.init(
     },
     amount: {
       type: DataTypes.DECIMAL,
+      allowNull: false,
+    },
+    date: {
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
   },

@@ -3,7 +3,10 @@ import { adaptMiddleware } from "@/presentation/http/adapters/ExpressMiddlewareA
 import { createExpenseController } from "@/domain/useCase/expense/CreateExpense"
 import { listExpenseController } from "@/domain/useCase/expense/ListExpense"
 import { makeAuthMiddleware } from "../middlewares/AuthMiddleware"
-import { validateBody, validateQuery } from "../middlewares/validation.middleware"
+import {
+  validateBody,
+  validateQuery,
+} from "../middlewares/validation.middleware"
 import { createExpenseSchema } from "../validators/expense/createExpense.schema"
 import { getTotalExpenseController } from "@/domain/useCase/expense/GetTotalExpense"
 import { totalExpenseSchema } from "../validators/expense/totalExpense.schema"
@@ -102,10 +105,12 @@ expenseRouter.get("/", (request, response) => {
  *                   type: string
  *                   example: "Internal Server Error"
  */
-expenseRouter.get("/total",
+expenseRouter.get(
+  "/total",
   validateQuery(totalExpenseSchema),
   (request, response) => {
     return getTotalExpenseController.handle(request, response)
-  })
+  },
+)
 
 export { expenseRouter }

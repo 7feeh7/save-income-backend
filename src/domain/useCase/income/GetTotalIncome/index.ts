@@ -4,8 +4,12 @@ import { GetTotalIncomeController } from "@/presentation/http/controllers/income
 
 const postgresIncomeRepository = new PostgresIncomeRepository()
 
-const getTotalIncomeUseCase = new GetTotalIncomeUseCase(postgresIncomeRepository)
+const getTotalIncomeUseCase = new GetTotalIncomeUseCase(
+  postgresIncomeRepository,
+)
 
-const getTotalIncomeController = new GetTotalIncomeController(getTotalIncomeUseCase)
+const getTotalIncomeController = new GetTotalIncomeController(
+  getTotalIncomeUseCase,
+)
 
 export { getTotalIncomeUseCase, getTotalIncomeController }

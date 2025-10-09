@@ -7,7 +7,7 @@ interface ListIncomeDTO {
   limit: number
 }
 export class ListIncomeUseCase {
-  constructor(private incomeRepository: IIncomeRepository) { }
+  constructor(private incomeRepository: IIncomeRepository) {}
 
   async execute({ id, page, limit }: ListIncomeDTO): Promise<Income> {
     return await this.incomeRepository.getIncomeByUser(id, page, limit)

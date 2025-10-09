@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize"
-import { development } from "./config"
+import { development } from "./config.js"
 
 const sequelize = new Sequelize(development)
 

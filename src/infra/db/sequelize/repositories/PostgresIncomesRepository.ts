@@ -37,12 +37,12 @@ export class PostgresIncomeRepository implements IIncomeRepository {
       where: {
         userId: id,
         createdAt: {
-          [Op.gte]: startDate, 
-          [Op.lt]: endDate
+          [Op.gte]: startDate,
+          [Op.lt]: endDate,
         },
       },
-    });
+    })
 
-    return Number(sum || 0);
+    return Number(sum || 0)
   }
 }
